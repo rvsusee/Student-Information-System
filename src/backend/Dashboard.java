@@ -1,4 +1,4 @@
-package Backend;
+package backend;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class Dashboard {
 		
 		System.out.println(" Menu");
 		System.out.println(" 1.View Student \n 2.New Students \n 3.Update Student \n 4.Delete Studnet \n 5.Exit \n");
-		System.out.println(" Enter Option : ");
+		System.out.print(" Enter Option : ");
 		int option = scanner.nextInt();
 		
 		if(option == 1 || option == 2 || option == 3 || option == 4) {
@@ -22,8 +22,7 @@ public class Dashboard {
 			System.out.println("Exiting ...");
 			System.exit(1);
 		
-		}
-		else {
+		}else {
 			System.out.println(" Please Enter Below Option !!!");
 			display();
 		
