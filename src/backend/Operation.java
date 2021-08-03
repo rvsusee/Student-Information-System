@@ -12,7 +12,7 @@ public class Operation {
 	void Option(int option) {
 		if(option == 1) {
 			String Query = "SELECT * FROM `student`";
-			dataBase.Read(Query);
+			dataBase.Read(Query,inputOption);
 		}
 		else if (option == 2) {
 			display();
@@ -24,15 +24,18 @@ public class Operation {
 			
 		}else if (option == 3) {
 			System.out.println("Enter Register Number : ");
-			String temp = input.nextLine(); 
+			String RegNo = input.nextLine(); 
+			
+			String Query = dataBase.fetchData(RegNo);
+			
 			display();
 			
-			//check query
-			String Query = "UPDATE `student` SET "
-					+ "`"+inputOption[0]+"` = '"+temp+"', `"+inputOption[1]+"` = '"+inputData[1]+"',`"+inputOption[2]+"` = '"+inputData[2]+"', `"+inputOption[3]+"` = '"+inputData[3]+"', `"+inputOption[4]+"` = '"+inputData[4]+"', `"+inputOption[5]+"` = '"+inputData[5]+"', `"+inputOption[6]+"` = '"+inputData[6]+"',`"+inputOption[7]+"` ='"+inputData[7]+"' ,`"+inputOption[8]+"` = '"+inputData[8]+"', `"+inputOption[9]+"` = '"+inputData[9]+"', `"+inputOption[10]+"` = '"+inputData[10]+"', `"+inputOption[11]+"` = '"+inputData[11]+"', `"+inputOption[12]+"` = '"+inputData[12]+"'";
-			
-				   Query+= " WHERE `student` .`"+inputOption[0]+"` = '"+inputData[0]+"', `"+inputOption[1]+"` = '"+inputData[1]+"',`"+inputOption[2]+"` = '"+inputData[2]+"', `"+inputOption[3]+"` = '"+inputData[3]+"', `"+inputOption[4]+"` = '"+inputData[4]+"', `"+inputOption[5]+"` = '"+inputData[5]+"', `"+inputOption[6]+"` = '"+inputData[6]+"',`"+inputOption[7]+"` ='"+inputData[7]+"' ,`"+inputOption[8]+"` = '"+inputData[8]+"', `"+inputOption[9]+"` = '"+inputData[9]+"', `"+inputOption[10]+"` = '"+inputData[10]+"', `"+inputOption[11]+"` = '"+inputData[11]+"', `"+inputOption[12]+"` = '"+inputData[12]+"'";
+			Query+= " UPDATE `student` SET `"+inputOption[0]+"` = '"+inputData[0]+"', `"+inputOption[1]+"` = '"+inputData[1]+"',`"+inputOption[2]+"` = '"+inputData[2]+"', `"+inputOption[3]+"` = '"+inputData[3]+"', `"+inputOption[4]+"` = '"+inputData[4]+"', `"+inputOption[5]+"` = '"+inputData[5]+"', `"+inputOption[6]+"` = '"+inputData[6]+"',`"+inputOption[7]+"` ='"+inputData[7]+"' ,`"+inputOption[8]+"` = '"+inputData[8]+"', `"+inputOption[9]+"` = '"+inputData[9]+"', `"+inputOption[10]+"` = '"+inputData[10]+"', `"+inputOption[11]+"` = '"+inputData[11]+"', `"+inputOption[12]+"` = '"+inputData[12]+"' WHERE `student`.`"+inputOption[0]+"` = '"+RegNo+"'";
+//			UPDATE `student` SET `Register Number` = '2222', `Name` = '22', `Photo` = '22', `Gender` = '22', `Date of Birth` = '22', `Blood Group` = '22', `Nationality` = '22', `Date of Joining` = '22', `Address` = '222', `Father Name` = '22', `Mother Name` = '22', `Phone Number` = '22', `Email` = '22' WHERE `student`.`Register Number` = '222'
+
+			System.out.println(Query);
 			dataBase.Update(Query);
+			
 		}else if(option == 4) {
 			System.out.println("Enter Register Number");
 			String temp = input.nextLine();
