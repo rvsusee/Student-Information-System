@@ -7,7 +7,7 @@ public class Dashboard {
 	void display() {
 		
 		Scanner scanner = new Scanner(System.in);
-		Input input = new Input();
+		Operation input = new Operation();
 		
 		System.out.println(" Menu");
 		System.out.println(" 1.View Student \n 2.New Students \n 3.Update Student \n 4.Delete Studnet \n 5.Exit \n");

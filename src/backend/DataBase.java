@@ -28,56 +28,16 @@ public class DataBase {
 	public void Read(String Query) {
 		try {
 			ResultSet resultset = statement.executeQuery(Query);
-			System.out.println(resultset+"fewfe");
+			String[] outputOption = {"Register Number","Name","Photo","Gender","Date of Birth","Blood Group","Nationality","Date of Joining","Address","Father Name","Mother Name","Phone Number","Email"};
+
 			while (resultset.next()) {
-				
-				//retrive by column name
-				String Roll_Number = resultset.getString("Roll Number");
-				System.out.println("Roll Number \t  : "+Roll_Number);
-				
-				String Register_Number = resultset.getString("Register Number");
-				System.out.println("Register Number \t  : "+Register_Number);
-				
-				String Name = resultset.getString("Name");
-				System.out.println("Name \t  : "+Name);
-				
-				String Photo = resultset.getString("Photo");
-				System.out.println("Photo \t  : "+Photo);
-				
-				String Gender = resultset.getString("Gender");
-				System.out.println("Gender \t  : "+Gender);
-				
-				String Date_of_Birth = resultset.getString("Date of Birth");
-				System.out.println("Date of Birth \t  : "+Date_of_Birth);
-				
-				String Blood_Group = resultset.getString("Blood Group");
-				System.out.println("Blood Group \t  : "+Blood_Group);
-				
-				String Nationality = resultset.getString("Nationality");
-				System.out.println("Nationality \t  : "+Nationality);
-				
-				String Date_of_Joining = resultset.getString("Date of Joining");
-				System.out.println("Date of Joining \t  : "+Date_of_Joining);
-				
-				String Address = resultset.getString("Address");
-				System.out.println("Address \t  : "+Address);
-				
-				String Father_Name = resultset.getString("Father Name");
-				System.out.println("Father Name \t  : "+Father_Name);
-				
-				String Mother_Name = resultset.getString("Mother Name");
-				System.out.println("Mother Name \t  : "+Mother_Name);
-				
-				String Phone_Number = resultset.getString("Phone Number");
-				System.out.println("Phone Number \t  : "+Phone_Number);
-				
-				String Email = resultset.getString("Email");
-				System.out.println("Email \t  : "+Email);
-				
+				for(int i = 0; i < outputOption.length; i++) {
+					System.out.println(outputOption[i]+" : "+resultset.getString(outputOption[i]));
+				}
 			}
 			System.out.println("Read Successfully Completed");
 		} catch (SQLException e) {
-			System.out.println(" Unabe to Read ");
+			System.out.println(" Unabe to Read "+e);
 		}
 	}
 	
@@ -91,11 +51,10 @@ public class DataBase {
 			else
 				System.out.println("Unable to Add New Student");
 		} catch (SQLException e) {
-			System.out.println(" Unable to Add ");
+			System.out.println(" Unable to Add "+e);
 		}
-	
 	}
-	
+
 	
 	//update data
 	public void Update(String Query) {
@@ -106,8 +65,19 @@ public class DataBase {
 			else
 				System.err.println("Unable to Update !!! . Please delete and Create new Student");
 		} catch (SQLException e) {
-			System.out.println("Unable to Update");
+			System.out.println("Unable to Update"+e);
 		}
+	}
+	
+	//fetch data
+	public void fetchData(String data) {
+		try {
+			ResultSet temp = statement.executeQuery("SELECT * FROM `student` where 'Register Number ="+data+"'");
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
